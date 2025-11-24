@@ -3,7 +3,7 @@ import { fetchWeather } from "../utils/fetchWeather";
 global.fetch = jest.fn(); // mock fetch globally
 
 describe("fetchWeather", () => {
-  const API_KEY = "53f9d8e4213222cf517d86dc406d67fc";
+  const API_KEY = process.env.API_KEY;
 
   const mockWeatherResponse = {
     weather: [{ main: "Clouds", description: "broken clouds" }],
