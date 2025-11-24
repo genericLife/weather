@@ -1,5 +1,5 @@
 # weather
-React web app that shows weather report based on geo location.
+React web app that shows weather report based on geo location. Uses Jest for unit tests and webpack for bundling.
 
 1. Clone repo
 ```bash
@@ -26,5 +26,9 @@ React web app that shows weather report based on geo location.
 ```bash
   npm test
 ```
+7. Build for production
+```bash
+  npm run build
+```   
 
 Additional features/considerations: I was getting inconsistent location names due to how the OpenWeatherMap API operates, I fixed this by using OWM's reverse location lookup and displaying the city name.
