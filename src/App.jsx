@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchNearestCityName, fetchWeather } from "../utils/fetchWeather";
 
 export default function App() {
@@ -21,12 +21,10 @@ export default function App() {
 
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        console.log(pos);
         const { latitude, longitude } = pos.coords;
         setCoords({ latitude, longitude });
         
         fetchWeather(latitude, longitude).then((data) => {
-          console.log(data);
           fetchNearestCityName(latitude, longitude).then((cityName) => {
             if (cityName) data.name = cityName;
             setWeather(data);
@@ -45,6 +43,10 @@ export default function App() {
     );
   };
 
+  useEffect(() => {
+    getLocationAndWeather();
+  }, []);
+
   return (
     <div className="app-container">
       {loading && (
@@ -55,9 +57,6 @@ export default function App() {
       )}
 
       <div className="weather-content">
-        {!coords && !weather && !loading && (
-          <button onClick={getLocationAndWeather}>Get Weather</button>
-        )}
 
         {coords && weather && (
           <div className="weather-box">

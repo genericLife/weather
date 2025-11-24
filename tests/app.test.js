@@ -1,6 +1,6 @@
 import { fetchWeather } from "../utils/fetchWeather";
 
-global.fetch = jest.fn(); // mock fetch globally
+global.fetch = jest.fn();
 
 describe("fetchWeather", () => {
   const API_KEY = process.env.API_KEY;

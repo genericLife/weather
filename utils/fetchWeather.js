@@ -6,7 +6,6 @@
       const res = await fetch(url);
 
       if (!res.ok) {
-        console.log(res);
         const message = `Weather API error: ${res.status} ${res.statusText}`;
         throw new Error('Failed to fetch weather data');
       }
@@ -33,7 +32,6 @@
         `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${API_KEY}`
       );
       const data = await res.json();
-      console.log(data);
       if (data && data.length > 0) {
         return data[0].name; // nearest city or area name
       }
